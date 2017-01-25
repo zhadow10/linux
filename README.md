@@ -3,27 +3,43 @@
 # Just a my personal simple tutorial to installing 
 # Arch Linux
 
-# create the partitions as needed(usually for me just one for everything)
-# remember to make it bootable and
-# format it
 lsblk
 cfdisk /dev/sdX
-# write it
+# Write it
 mkfs.ext4 /dev/sdXX
 mkdir /mnt
 mount /dev/sdXX /mnt
 pacstrap /mnt base base-devel
-# Generate fstab
+# Configure System
 genfstab -U /mnt >> /mnt/etc/fstab
-# Chroot into it
 arch-root /mnt
-# set time zone
+
+set time zone
 ln -s /usr/share/zoneinfo/Region/City /etc/localtime
 
-# Uncomment en_US.UTF-8 UTF-8 in /etc/locale.gen, and generate it with: 
+Uncomment en_US.UTF-8 UTF-8 in /etc/locale.gen, and generate it with: 
 locale-gen
-
-# Set the LANG variable in locale.conf(5) accordingly, for example:
 
 /etc/locale.conf
 LANG=en_US.UTF-8
+
+# Create the hostname
+/etc/hostname -> myhostname
+
+/etc/hosts
+127.0.0.1	  localhost.localdomain	  localhost
+::1		      localhost.localdomain	  localhost
+127.0.1.1	  myhostname.localdomain	myhostname
+
+# Change root password
+passwd
+
+# Install and configure bootloader
+pacman -S grub (oprtionally install os-prober)
+grub-install /dev/sdX
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# Wrap up to reboot into OS
+exit
+umount /mnt
+reboot
