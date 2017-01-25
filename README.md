@@ -8,6 +8,10 @@ cfdisk /dev/sdX
 # Write it
 mkfs.ext4 /dev/sdXX
 
+(mkfs.ext4 -O "^has_journal" /dev/sdXX)
+
+for no journaling
+
 mkdir /mnt
 
 mount /dev/sdXX /mnt
@@ -57,3 +61,14 @@ exit
 umount /mnt
 
 reboot
+
+# Once booted into OS
+I'll figure out the details later:
+
+networkmanager network-manager-applet
+
+xf86-input-synaptics
+xf86-video-vesa
+xf86-video-ati
+xf86-video-intel
+xf86-video-mesa
