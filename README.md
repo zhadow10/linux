@@ -72,3 +72,5 @@ xf86-video-vesa
 xf86-video-ati
 xf86-video-intel
 xf86-video-mesa
+
+twmn-git AUR
