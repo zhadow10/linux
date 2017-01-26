@@ -74,3 +74,4 @@ xf86-video-intel
 xf86-video-mesa
 
 twmn-git AUR
+htop AUR
