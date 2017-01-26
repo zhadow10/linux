@@ -65,6 +65,8 @@ reboot
 # Once booted into OS
 I'll figure out the details later:
 
+systemctl enable dhcpcd
+
 networkmanager network-manager-applet
 
 xf86-input-synaptics
@@ -73,5 +75,16 @@ xf86-video-ati
 xf86-video-intel
 xf86-video-mesa
 
+# Extra
 twmn-git AUR
+
 htop AUR
+
+termite
+
+firefox
+
+cups
+
+ntp
+
